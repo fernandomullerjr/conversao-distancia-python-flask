@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, url_for, redirect, Response, jsonify
 import logging
 
+#
+
 app = Flask(__name__,
             static_url_path='', 
             static_folder='static',
@@ -24,7 +26,7 @@ def index():
         return render_template('index.html', conteudo={'unidade': unidade, 'valor': resultado})
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0")
 else:
     gunicorn_logger = logging.getLogger('gunicorn.error')
     app.logger.handlers = gunicorn_logger.handlers
